@@ -3,94 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bé Ơi Cố Lên! 💖</title>
+    <title>Gửi Bé Iu 💜</title>
     <style>
+        :root {
+            --light-purple: #f3e5f5;
+            --main-purple: #ce93d8;
+            --dark-purple: #9c27b0;
+            --text-glow: #ffffff;
+        }
+
         body {
-            /* Background màu mè chói lóa */
-            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-            text-align: center;
-            overflow: hidden; /* Ẩn thanh cuộn */
+            /* Background màu tím nhạt chuyển động nhẹ nhàng */
+            background: linear-gradient(-45deg, #f3e5f5, #e1bee7, #d1c4e9, #f3e5f5);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Segoe UI', 'cursive', sans-serif;
             margin: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-        h1 {
-            font-size: 4rem;
-            color: #ff0844;
-            /* Đổ bóng cho text nổi bật */
-            text-shadow: 3px 3px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
-            z-index: 10;
-            /* Hiệu ứng nhấp nháy đập nhịp tim */
-            animation: pulse 1s infinite alternate;
-            padding: 0 20px;
-        }
-        .marquee-container {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .be-oi {
-            font-size: 1.5rem;
-            color: #ff1493;
-            font-weight: bold;
-            position: absolute;
-            white-space: nowrap;
-            /* Hiệu ứng bay lên */
-            animation: floatUp linear infinite;
-        }
-        .emojis {
-            font-size: 3.5rem;
-            z-index: 10;
-            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Thông điệp chính ở giữa màn hình */
+        .main-message {
+            z-index: 100;
+            text-align: center;
+            color: var(--dark-purple);
+            /* Hiệu ứng chữ nổi cực mạnh */
+            text-shadow: 
+                2px 2px 0px #fff, 
+                4px 4px 0px rgba(156, 39, 176, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.8);
+            animation: pulse 2s infinite ease-in-out;
+            padding: 20px;
+        }
+
+        .main-text {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            display: block;
+        }
+
+        .sub-text {
+            font-size: 1rem;
+            font-weight: normal;
+            display: block;
+            margin-top: 10px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Quote box đẩy xuống dưới */
+        .quote-container {
+            position: absolute;
+            bottom: 50px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(156, 39, 176, 0.1);
+            z-index: 50;
+            max-width: 80%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .quote-content {
+            text-align: left;
+        }
+
+        .quote-text {
+            font-size: 0.95rem;
+            color: #4a148c;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .author {
+            font-size: 0.75rem;
+            color: #7b1fa2;
+            margin: 0;
+        }
+
+        /* Text bay lơ lửng: bé ơi cố lên */
+        .floating-word {
+            position: absolute;
+            color: rgba(156, 39, 176, 0.4);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp linear forwards;
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(110vh) rotate(-10deg); opacity: 1; }
-            100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
+            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng tim rơi nhẹ nhàng */
+        .heart {
+            position: absolute;
+            color: var(--main-purple);
+            opacity: 0.3;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <!-- Nơi chứa hàng ngàn text bé ơi cố lên -->
-    <div class="marquee-container" id="container"></div>
 
-    <!-- Thông điệp chính -->
-    <h1>🌸 CÓ LÀM THÌ MỚI CÓ ĂN 💖</h1>
-    <div class="emojis">🌺✨💝🍀🌷💕</div>
+    <div class="main-message">
+        <span class="main-text">💜 Có làm thì mới có ăn 💜</span>
+        <span class="sub-text">(nếu không thì chỉ có ăn tui... 💜)</span>
+    </div>
+
+    <div class="quote-container" id="quote-box">
+        <img id="avatar" class="avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucky" alt="Avatar">
+        <div class="quote-content">
+            <p class="quote-text" id="quote">"Đừng chờ đợi cơ hội, hãy tự tạo ra nó."</p>
+            <p class="author" id="author">- Khuyết danh</p>
+        </div>
+    </div>
 
     <script>
-        const container = document.getElementById('container');
-        const text = "[bé ơi cố lên] ";
-        const elementsCount = 80; // Số lượng text bay lơ lửng
+        const quotes = [
+            { text: "Lao động hăng say, vận may sẽ đến!", author: "Lời khuyên từ ai quên rồi", seed: "love" },
+            { text: "Cách duy nhất để làm tốt một việc là yêu nó.", author: "Steve Jobs", seed: "steve" },
+            { text: "Thành công là đi từ thất bại này đến thất bại khác mà không mất đi lòng nhiệt huyết.", author: "Churchill", seed: "church" },
+            { text: "Bé cứ cố gắng, cả thế giới (và anh) sẽ giúp bé!", author: "My Love", seed: "cute" }
+        ];
 
-        const icons = ["💖", "🌸", "🌺", "✨", "💕", "🌷"];
-
-        for (let i = 0; i < elementsCount; i++) {
-            let div = document.createElement('div');
-            div.className = 'be-oi';
-            
-            // Random icon đi kèm text
-            let randomIcon = icons[Math.floor(Math.random() * icons.length)];
-            div.innerText = text + randomIcon;
-            
-            // Random vị trí xuất phát, tốc độ và kích thước
-            div.style.left = Math.random() * 100 + 'vw';
-            div.style.animationDuration = (Math.random() * 5 + 3) + 's'; // Bay từ 3-8s
-            div.style.animationDelay = Math.random() * 5 + 's';
-            div.style.fontSize = (Math.random() * 1.2 + 1) + 'rem'; // Size từ 1 - 2.2rem
-            
-            container.appendChild(div);
+        let qIndex = 0;
+        function rotateQuote() {
+            qIndex = (qIndex + 1) % quotes.length;
+            const q = quotes[qIndex];
+            document.getElementById('quote').innerText = `"${q.text}"`;
+            document.getElementById('author').innerText = `- ${q.author}`;
+            document.getElementById('avatar').src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${q.seed}`;
         }
+        setInterval(rotateQuote, 6000);
+
+        function spawnText() {
+            const el = document.createElement('div');
+            el.className = 'floating-word';
+            el.innerText = 'bé ơi cố lên 💜';
+            el.style.left = Math.random() * 90 + 'vw';
+            el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+            el.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 10000);
+        }
+        setInterval(spawnText, 700);
+
+        function spawnHeart() {
+            const h = document.createElement('div');
+            h.className = 'heart';
+            h.innerHTML = '💜';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.top = '-20px';
+            h.style.fontSize = Math.random() * 15 + 10 + 'px';
+            h.style.transition = `transform ${Math.random() * 5 + 5}s linear, top ${Math.random() * 5 + 5}s linear`;
+            document.body.appendChild(h);
+            
+            setTimeout(() => {
+                h.style.top = '110vh';
+                h.style.transform = `translateX(${Math.random() * 100 - 50}px) rotate(360deg)`;
+            }, 100);
+            setTimeout(() => h.remove(), 10000);
+        }
+        setInterval(spawnHeart, 500);
     </script>
 </body>
 </html>
