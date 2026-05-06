@@ -159,10 +159,11 @@
 
     <script>
         const quotes = [
-            { text: "Lao động hăng say, vận may sẽ đến!", author: "Lời khuyên từ ai quên rồi", seed: "love" },
+            { text: "Lao động hăng say, vận may sẽ đến!", author: "Lời khuyên từ ai quên rồi", seed: "love" },            
+	    { text: "Bé cứ cố gắng, cả thế giới (và anh) sẽ giúp bé!", author: "My Love", seed: "cute" },
             { text: "Cách duy nhất để làm tốt một việc là yêu nó.", author: "Steve Jobs", seed: "steve" },
             { text: "Thành công là đi từ thất bại này đến thất bại khác mà không mất đi lòng nhiệt huyết.", author: "Churchill", seed: "church" },
-            { text: "Bé cứ cố gắng, cả thế giới (và anh) sẽ giúp bé!", author: "My Love", seed: "cute" }
+
         ];
 
         let qIndex = 0;
@@ -179,7 +180,7 @@
             const el = document.createElement('div');
             el.className = 'floating-word';
             el.innerText = 'bé ơi cố lên 💜';
-            el.style.left = Math.random() * 90 + 'vw';
+            el.style.left = Math.random() * 70 + 'vw';
             el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
             el.style.animationDuration = (Math.random() * 3 + 6) + 's';
             document.body.appendChild(el);
