@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bé Ơi Cố Lên! 💖</title>
+    <style>
+        body {
+            /* Background màu mè chói lóa */
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            text-align: center;
+            overflow: hidden; /* Ẩn thanh cuộn */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 4rem;
+            color: #ff0844;
+            /* Đổ bóng cho text nổi bật */
+            text-shadow: 3px 3px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+            z-index: 10;
+            /* Hiệu ứng nhấp nháy đập nhịp tim */
+            animation: pulse 1s infinite alternate;
+            padding: 0 20px;
+        }
+        .marquee-container {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .be-oi {
+            font-size: 1.5rem;
+            color: #ff1493;
+            font-weight: bold;
+            position: absolute;
+            white-space: nowrap;
+            /* Hiệu ứng bay lên */
+            animation: floatUp linear infinite;
+        }
+        .emojis {
+            font-size: 3.5rem;
+            z-index: 10;
+            margin-top: 10px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(-10deg); opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nơi chứa hàng ngàn text bé ơi cố lên -->
+    <div class="marquee-container" id="container"></div>
+
+    <!-- Thông điệp chính -->
+    <h1>🌸 CÓ LÀM THÌ MỚI CÓ ĂN 💖</h1>
+    <div class="emojis">🌺✨💝🍀🌷💕</div>
+
+    <script>
+        const container = document.getElementById('container');
+        const text = "[bé ơi cố lên] ";
+        const elementsCount = 80; // Số lượng text bay lơ lửng
+
+        const icons = ["💖", "🌸", "🌺", "✨", "💕", "🌷"];
+
+        for (let i = 0; i < elementsCount; i++) {
+            let div = document.createElement('div');
+            div.className = 'be-oi';
+            
+            // Random icon đi kèm text
+            let randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            div.innerText = text + randomIcon;
+            
+            // Random vị trí xuất phát, tốc độ và kích thước
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.animationDuration = (Math.random() * 5 + 3) + 's'; // Bay từ 3-8s
+            div.style.animationDelay = Math.random() * 5 + 's';
+            div.style.fontSize = (Math.random() * 1.2 + 1) + 'rem'; // Size từ 1 - 2.2rem
+            
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>
